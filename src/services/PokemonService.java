@@ -47,7 +47,9 @@ public class PokemonService {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             Pokemon pokemon = session.get(Pokemon.class,id);
-            session.remove(pokemon);
+            if (pokemon!=null) {
+                session.remove(pokemon);
+            }
             transaction.commit();
         } catch (Exception e) {
             System.out.println("Ha habido un error borrando al pokemon");
