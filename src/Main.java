@@ -106,9 +106,11 @@ public class Main {
         adestradorService.actualizarAdestrador(adestrador2);
 
         System.out.println("Listando datos de tablas");
-        for (Pokemon pokemon : pokemonService.obtenerTodosPokemon()) {
+        List<Pokemon> pokemons1 = pokemonService.obtenerTodosPokemon();
+        for (Pokemon pokemon : pokemons1) {
             System.out.println(pokemon);
         }
+        pokemonService.toXML("pokemons.xml",pokemons1);
         for (Pokedex pokedexEntry : pokedexService.listarPokedex()) {
             System.out.println(pokedexEntry);
         }
