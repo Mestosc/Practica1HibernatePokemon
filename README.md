@@ -1,5 +1,5 @@
 # Practica 1 Hibernate: Pokemon
-¡Bienvenido a la Pokédex con Hibernate! trainer Este proyecto es una aplicación de consola que utiliza Hibernate para gestionar una base de datos de Pokémon, entrenadores y entradas de la Pokédex. 
+¡Bienvenido a la Pokédex con Hibernate! Este proyecto es una aplicación de consola que utiliza Hibernate para gestionar una base de datos de Pokémon, entrenadores y entradas de la Pokédex. 
 
 ## 🚀 Funcionalidades Clave
 
