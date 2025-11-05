@@ -21,7 +21,6 @@ public class PokedexService {
             session.save(pokedex);
             transaction.commit();
         } catch (Exception e) {
-            //e.printStackTrace();
             System.out.println("Error al crear una entrada " + e.getMessage());
         }
     }
@@ -57,7 +56,6 @@ public class PokedexService {
         } catch (Exception e) {
             System.out.println("Error en la creacion da entrada na pokedex");
         }
-
     }
     public Pokedex leerEntradaPokedex(Long id) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
