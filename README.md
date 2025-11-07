@@ -29,7 +29,7 @@ Para ejecutar el proyecto, sigue estos pasos:
 ## 🛠️ Tecnologías Utilizadas
 
 *   **Java:** ☕ El lenguaje de programación principal.
-*   **Hibernate:** 🐘 El framework de mapeo objeto-relacional (ORM) para la persistencia de datos.
+*   **Hibernate:** 🐘 El framework de mapeo objeto-relacional (ORM) para manipular la base de datos usando objetos desde nuestro programa.
 *   **PostgreSQL:** 🐘 La base de datos utilizada para almacenar los datos.
 
 Y alguna cosa más
