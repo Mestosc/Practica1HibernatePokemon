@@ -28,6 +28,13 @@ public class Pokemon {
 
     public Pokemon() {}
 
+    /**
+     * Creacion de una entrada para la tabla de pokemon
+     * @param nome El nombre del pokemon
+     * @param nacemento la fecha de nacimiento del mismo
+     * @param pokedexEntry la entrada de la pokedex con toda su informacion
+     * @param adestrador el entrenador de ese pokemon
+     */
     public Pokemon(String nome, Date nacemento, Pokedex pokedexEntry, Adestrador adestrador) {
         this.nome = nome;
         this.nacemento = nacemento;

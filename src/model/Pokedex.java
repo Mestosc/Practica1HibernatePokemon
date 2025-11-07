@@ -50,6 +50,12 @@ public class Pokedex implements Serializable {
     }
     public Pokedex() {}
 
+    /**
+     * Creacion de una entrada de la Pokedex
+     * @param nome el nombre de la 'especie' del pokemon
+     * @param peso el peso del pokemon
+     * @param misc informacion a mayores
+     */
     public Pokedex(String nome, BigDecimal peso, String misc) {
         this.nome = nome;
         this.peso = peso;
