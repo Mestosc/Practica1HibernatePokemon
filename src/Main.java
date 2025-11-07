@@ -78,9 +78,9 @@ public class Main {
         Pokedex pokedexEntry1 = pokedexService.leerEntradaPokedex(10L);
         Pokedex pokedexEntry2 = pokedexService.leerEntradaPokedex(4L);
 
-        pokedexService.serializarEntradasPokedex("pokedexSerializada.dat",pokedexEntry1,pokedexEntry2);
+        pokedexService.serializarEntradasPokedex("pokedexSerializada.dat",pokedexEntry1,pokedexEntry2); // Con esto serializamos solo estas dos entradas
         System.out.println("Mostrando datos serializados");
-        ArrayList<Pokedex> entradasSerializadas = pokedexService.leerEntradasSerializadas("pokedexSerializada.dat",2);
+        ArrayList<Pokedex> entradasSerializadas = pokedexService.leerEntradasSerializadas("pokedexSerializada.dat",2); // Con esto nos aseguramos de desserializar solo las entradas que nos interesen
 
         entradasSerializadas.getFirst().setPeso(new BigDecimal("4.50")); // 6.50
         entradasSerializadas.get(1).setPeso(new BigDecimal("5.00")); // 6.00
@@ -114,7 +114,7 @@ public class Main {
         for (Pokedex pokedexEntry : pokedexService.listarPokedex()) {
             System.out.println(pokedexEntry);
         }
-        ArrayList<Adestrador> adestradorsXML = adestradorService.leerXML("adestradores.xml");
+        ArrayList<Adestrador> adestradorsXML = adestradorService.leerXML("adestradores.xml"); // Leemos el XML de adestradores y obtenemos las entradas
         for (Adestrador adestrador : adestradorsXML) {
             adestradorService.actualizarAdestrador(adestrador);
         }

@@ -22,7 +22,7 @@ public class Pokemon {
     @JoinColumn(name = "pokedexentry",referencedColumnName = "id")
     private Pokedex pokedexEntry;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL) // Esto es desde la clase en la que estoy no desde la clase atributo a la que corresponde el campo
     @JoinColumn(name = "adestrador",referencedColumnName = "id")
     private Adestrador adestrador;
 
