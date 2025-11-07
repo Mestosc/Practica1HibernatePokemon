@@ -15,6 +15,12 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
+/**
+ * Servicio para manipular los pokemon
+ * @version 1.0
+ * @author Oscar
+ * @see model.Pokemon
+ */
 public class PokemonService {
     public void crearPokemon(String nome, Date nacemento, Pokedex pokedexEntry, Adestrador adestrador) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {

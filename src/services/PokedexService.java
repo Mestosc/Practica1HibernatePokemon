@@ -10,6 +10,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servicio para realizar operaciones CRUD y alguna otra cosa en la Pokedex
+ * @version 1.0
+ * @author Oscar
+ * @see model.Pokedex
+ */
 public class PokedexService {
     public void crearEntrada(String nome, BigDecimal peso, String misc) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {

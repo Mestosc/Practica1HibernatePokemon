@@ -16,6 +16,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servicio para realizar las operaciones CRUD sobre un Adestrador
+ * @version 1.0
+ * @author Oscar
+ * @see model.Adestrador
+ */
 public class AdestradorService {
     public void crearAdestrador(String nome, Date nacemento) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
@@ -137,6 +143,12 @@ public class AdestradorService {
         }
         return null;
     }
+
+    /**
+     * Leer el Xml de entrenadores
+     * @param fichero el fichero XML a leer
+     * @return los elementos del XML como un ArrayList de Adestrador
+     */
     public ArrayList<Adestrador> leerXML(String fichero) {
         ArrayList<Adestrador> adestradors = new ArrayList<>();
         String elementoActual = null;
@@ -146,7 +158,7 @@ public class AdestradorService {
             while (xmlReader.hasNext()) {
                 int elemento = xmlReader.next();
                 switch (elemento) {
-                    case XMLStreamConstants.START_ELEMENT -> {
+                    case XMLStreamConstants.START_ELEMENT -> { // Esto es cuando estamos en la etiqueta incial de un elemento
                         String nombreElemento = xmlReader.getLocalName();
                         if (nombreElemento.equals("adestrador")) {
                            adestrador = new Adestrador();
