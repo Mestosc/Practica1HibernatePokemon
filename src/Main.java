@@ -14,8 +14,6 @@ import java.util.List;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        // Aquello que requiera introducir informacion debera ser descomentado previamente para el uso lo hice así por comodidad
-
         // Inicialización de los servicios para interactuar con la base de datos
         PokedexService pokedexService = new PokedexService();
         AdestradorService adestradorService = new AdestradorService();
