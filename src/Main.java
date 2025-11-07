@@ -15,9 +15,13 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // Aquello que requiera introducir informacion debera ser descomentado previamente para el uso lo hice así por comodidad
+
+        // Inicialización de los servicios para interactuar con la base de datos
         PokedexService pokedexService = new PokedexService();
         AdestradorService adestradorService = new AdestradorService();
         PokemonService pokemonService = new PokemonService();
+
+        // Creación de un array de objetos Pokedex con datos iniciales
         Pokedex[] pokedex = {
                 new Pokedex("Bulbasaur", new BigDecimal("6.90"), "Planta/Veneno"),
                 new Pokedex("Charmander", new BigDecimal("8.50"), "Fuego"),
@@ -31,22 +35,30 @@ public class Main {
                 new Pokedex("Eevee", new BigDecimal("6.50"), "Normal")
         };
         // === ARRAY DE ADESTRADORES ===
+        // Creación de un array de objetos Adestrador con datos iniciales
         Adestrador[] adestradores = {
                 new Adestrador("O", Date.valueOf("2006-03-22")),
                 new Adestrador("Emni", Date.valueOf("1998-07-09"))
         };
+
         System.out.println("Insertando datos");
+        // Bucle para insertar cada entrada de Pokedex en la base de datos
         for (Pokedex pokedexEntry : pokedex) {
             System.out.println("Insertando entrada " + pokedexEntry + " na tabla pokedex");
             pokedexService.crearEntrada(pokedexEntry);
         }
+        // Bucle para insertar cada Adestrador en la base de datos
         for (Adestrador adestrador : adestradores) {
             System.out.println("Insertando adestrador " + adestrador + " en tabla adestrador");
             adestradorService.crearAdestrador(adestrador);
         }
+
+        // Obtención de todas las entradas de Pokedex y Adestradores de la base de datos
         List<Pokedex> entradasPokedex = pokedexService.listarPokedex();
         List<Adestrador> adestradores1 = adestradorService.obtenerAdestradores();
+
         // === ARRAY DE POKEMON ===
+        // Creación de un array de objetos Pokemon con datos iniciales, relacionándolos con Pokedex y Adestradores existentes
         Pokemon[] pokemons = {
                 new Pokemon("Bulby", Date.valueOf("2020-03-10"), entradasPokedex.get(0), adestradores1.get(0)),
                 new Pokemon("Flamy", Date.valueOf("2021-07-21"), entradasPokedex.get(1), adestradores1.get(0)),
@@ -62,11 +74,14 @@ public class Main {
                 new Pokemon("Geo", Date.valueOf("2018-11-30"), entradasPokedex.get(8), adestradores1.get(0))
         };
 
+        // Bucle para insertar cada Pokemon en la base de datos
         for (Pokemon pokemon : pokemons) {
             System.out.println("Insertando en tabla pokemon o pokemon " + pokemon);
             pokemonService.crearPokemon(pokemon);
         }
         System.out.println("Insercion de datos finalizada");
+
+        // Impresión de todas las entradas de Pokedex y Adestradores
         for (Pokedex entradaPokedex : entradasPokedex) {
             System.out.println(entradaPokedex);
         }
@@ -74,47 +89,63 @@ public class Main {
         for (Adestrador adestrador : adestradores1) {
             System.out.println(adestrador);
         }
-        // Cosas Pokedex
+
+        // --- Operaciones con Pokedex ---
+        // Lectura de entradas específicas de Pokedex por ID
         Pokedex pokedexEntry1 = pokedexService.leerEntradaPokedex(10L);
         Pokedex pokedexEntry2 = pokedexService.leerEntradaPokedex(4L);
 
-        pokedexService.serializarEntradasPokedex("pokedexSerializada.dat",pokedexEntry1,pokedexEntry2); // Con esto serializamos solo estas dos entradas
+        // Serialización de dos entradas de Pokedex a un archivo
+        pokedexService.serializarEntradasPokedex("pokedexSerializada.dat",pokedexEntry1,pokedexEntry2);
         System.out.println("Mostrando datos serializados");
-        ArrayList<Pokedex> entradasSerializadas = pokedexService.leerEntradasSerializadas("pokedexSerializada.dat",2); // Con esto nos aseguramos de desserializar solo las entradas que nos interesen
+        // Deserialización de entradas de Pokedex desde un archivo
+        ArrayList<Pokedex> entradasSerializadas = pokedexService.leerEntradasSerializadas("pokedexSerializada.dat",2);
 
-        entradasSerializadas.getFirst().setPeso(new BigDecimal("4.50")); // 6.50
-        entradasSerializadas.get(1).setPeso(new BigDecimal("5.00")); // 6.00
+        // Modificación de los pesos de las entradas deserializadas
+        entradasSerializadas.getFirst().setPeso(new BigDecimal("4.50"));
+        entradasSerializadas.get(1).setPeso(new BigDecimal("5.00"));
 
         System.out.println("Listando entradas serializadas");
+        // Impresión de las entradas deserializadas y modificadas
         for (Pokedex entrada : entradasSerializadas) {
             System.out.println(entrada);
         }
 
+        // Actualización de las entradas de Pokedex en la base de datos con los nuevos pesos
         pokedexService.actualizarEntrada(entradasSerializadas.getFirst());
         pokedexService.actualizarEntrada(entradasSerializadas.get(1));
         // Fin Cosas Pokedex
 
-        // Cosas Adestrador
+        // --- Operaciones con Adestrador ---
+        // Obtención de Adestradores por ID
         Adestrador adestrador1 = adestradorService.obtenerAdestradorId(1L);
         Adestrador adestrador2 = adestradorService.obtenerAdestradorId(2L);
 
+        // Serialización de Adestradores a un archivo XML
         adestradorService.toXML("adestradores.xml",adestrador1,adestrador2);
 
+        // Modificación de los datos de los Adestradores
         adestrador2.setNacemento(Date.valueOf("1999-09-01"));
         adestrador1.setNome("Om");
+        // Actualización de los Adestradores en la base de datos
         adestradorService.actualizarAdestrador(adestrador1);
         adestradorService.actualizarAdestrador(adestrador2);
 
         System.out.println("Listando datos de tablas");
+        // Obtención y listado de todos los Pokemon
         List<Pokemon> pokemons1 = pokemonService.obtenerTodosPokemon();
         for (Pokemon pokemon : pokemons1) {
             System.out.println(pokemon);
         }
+        // Serialización de todos los Pokemon a un archivo XML
         pokemonService.toXML("pokemons.xml",pokemons1);
+        // Listado de todas las entradas de Pokedex
         for (Pokedex pokedexEntry : pokedexService.listarPokedex()) {
             System.out.println(pokedexEntry);
         }
-        ArrayList<Adestrador> adestradorsXML = adestradorService.leerXML("adestradores.xml"); // Leemos el XML de adestradores y obtenemos las entradas
+        // Lectura de Adestradores desde un archivo XML
+        ArrayList<Adestrador> adestradorsXML = adestradorService.leerXML("adestradores.xml");
+        // Actualización de los Adestradores leídos desde el XML en la base de datos
         for (Adestrador adestrador : adestradorsXML) {
             adestradorService.actualizarAdestrador(adestrador);
         }
