@@ -52,9 +52,9 @@ public class AdestradorService {
             xml.writeEndElement();
             xml.writeEndDocument();
         } catch (IOException e) {
-            System.out.println("Error na escritura del XML");
+            System.out.println("Error na escritura del XML: " + e.getMessage());
         } catch (XMLStreamException e) {
-            System.out.println("Fallo al parsear el XML");
+            System.out.println("Fallo al parsear el XML: " + e.getMessage());
         }
     }
     public void toXML(String nombreFichero,Adestrador...adestradors) {
@@ -82,9 +82,9 @@ public class AdestradorService {
             xml.writeEndElement();
             xml.writeEndDocument();
         } catch (IOException e) {
-            System.out.println("Error na escritura");
+            System.out.println("Error na escritura: " + e.getMessage());
         } catch (XMLStreamException e) {
-            System.out.println("Fallo al parsear el XML");
+            System.out.println("Fallo al parsear el XML " + e.getMessage());
         }
     }
     public void crearAdestrador(Adestrador adestrador) {

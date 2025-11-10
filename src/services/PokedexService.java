@@ -30,6 +30,12 @@ public class PokedexService {
             System.out.println("Error al crear una entrada " + e.getMessage());
         }
     }
+
+    /**
+     * Serializar entradas de pokedex
+     * @param fichero el fichero en el que quiero serializarlas
+     * @param pokedexEntries las entradas que quiero serializar una detras de otra
+     */
     public void serializarEntradasPokedex(String fichero,Pokedex...pokedexEntries) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fichero))) {
             objectOutputStream.writeInt(pokedexEntries.length);
@@ -40,6 +46,13 @@ public class PokedexService {
             System.out.println("Fallo actualizando entradas de Pokedex " + f.getMessage());
         }
     }
+
+    /**
+     * El nombre del archivo serializado en este caso para las entradas de Pokedex
+     * @param fichero el fichero que quiero leer
+     * @param cantidadLeer la cantidad de datos a obtener
+     * @return una lista con las entradas de Pokedex, que queria leer
+     */
     public ArrayList<Pokedex> leerEntradasSerializadas(String fichero,int cantidadLeer) {
         ArrayList<Pokedex> entradasPokedex = new ArrayList<>();
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(fichero))) {

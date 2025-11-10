@@ -29,7 +29,7 @@ public class PokemonService {
             session.save(pokemon);
             transaction.commit();
         } catch (Exception e) {
-            System.out.println("Fallo al crear un pokemon");
+            System.out.println("Fallo al crear un pokemon: " + e.getMessage());
         }
     }
     public void crearPokemon(Pokemon pokemon) {
@@ -46,7 +46,7 @@ public class PokemonService {
             session.save(pokemon);
             transaction.commit();
         } catch (Exception e) {
-            System.out.println("Fallo al crear un pokemon");
+            System.out.println("Fallo al crear un pokemon: " + e.getMessage());
         }
     }
     public void borrarPokemon(Long id) {
@@ -58,18 +58,18 @@ public class PokemonService {
             }
             transaction.commit();
         } catch (Exception e) {
-            System.out.println("Ha habido un error borrando al pokemon");
+            System.out.println("Ha habido un error borrando al pokemon " + e.getMessage());
         }
     }
     public Pokemon obtenerPokemonId(Long id) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             return session.get(Pokemon.class,id);
         } catch (Exception e) {
-            System.out.println("Fallo al encontrar un pokemon");
+            System.out.println("Fallo al encontrar un pokemon " + e.getMessage());
             return null;
         }
     }
-    public Pokemon obtenerPokemonNombre(String nombre) {
+    public Pokemon obtenerPokemonNombre(String nombre) { // Este metodo no se ha comportado como esperado y hubo asuntillos con la implementacion
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             return session.get(Pokemon.class,nombre);
         } catch (Exception e) {
@@ -77,6 +77,11 @@ public class PokemonService {
             return null;
         }
     }
+
+    /**
+     * Operacion de actualizacion de un Pokemon
+     * @param pokemon el pokemon a actualizar
+     */
     public void actualizarPokemon(Pokemon pokemon) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
