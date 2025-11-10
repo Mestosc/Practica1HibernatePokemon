@@ -52,7 +52,7 @@ public class AdestradorService {
             xml.writeEndElement();
             xml.writeEndDocument();
         } catch (IOException e) {
-            System.out.println("Error na escritura");
+            System.out.println("Error na escritura del XML");
         } catch (XMLStreamException e) {
             System.out.println("Fallo al parsear el XML");
         }

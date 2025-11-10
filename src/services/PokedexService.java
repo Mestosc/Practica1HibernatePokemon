@@ -37,7 +37,7 @@ public class PokedexService {
                 objectOutputStream.writeObject(entry);
             }
         } catch (IOException f) {
-            System.out.println("Probel " + f.getMessage());
+            System.out.println("Fallo actualizando entradas de Pokedex " + f.getMessage());
         }
     }
     public ArrayList<Pokedex> leerEntradasSerializadas(String fichero,int cantidadLeer) {
@@ -48,9 +48,9 @@ public class PokedexService {
                 entradasPokedex.add((Pokedex) objectInputStream.readObject());
             }
         } catch (IOException e) {
-            System.out.println("Cosas problemas " + e.getMessage());
+            System.out.println("Problemas de I/O al leer serializado " + e.getMessage());
         } catch (ClassNotFoundException e) {
-            System.out.println("Otros problemas " + e.getMessage());
+            System.out.println("Clase no encontrada " + e.getMessage());
         }
         return entradasPokedex;
     }
@@ -85,7 +85,7 @@ public class PokedexService {
             session.update(pokedex);
             transaction.commit();
         } catch (Exception e) {
-            System.out.println("Fallo " + e.getMessage());
+            System.out.println("Fallo al actualizar entrada " + e.getMessage());
         }
     }
     public void eliminarEntrada(Long id) {
