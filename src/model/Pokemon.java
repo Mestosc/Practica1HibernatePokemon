@@ -18,7 +18,7 @@ public class Pokemon {
     @Column(name = "nacemento")
     private Date nacemento;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL) // Creo que era así es verdad que lo tenia OneToOne pero es verdad, muchos pokemon pueden ir a una entrada de la Pokedex me confundi
     @JoinColumn(name = "pokedexentry",referencedColumnName = "id")
     private Pokedex pokedexEntry;
 
