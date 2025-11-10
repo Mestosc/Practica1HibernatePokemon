@@ -106,12 +106,19 @@ public class PokedexService {
             System.out.println("Fallo al actualizar entrada " + e.getMessage());
         }
     }
+
+    /**
+     * Eliminar entrada de la base de datos mediante su identificador unico
+     * @param id el identificador unico de la base de datos
+     */
     public void eliminarEntrada(Long id) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             Pokedex pokedex = session.get(Pokedex.class,id);
             if (pokedex!=null) {
                 session.delete(pokedex);
+            } else {
+                System.out.println("No existe la entrada en la base de datos omitiendo...");
             }
             transaction.commit();;
         }

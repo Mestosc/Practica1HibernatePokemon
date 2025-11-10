@@ -18,6 +18,11 @@ public class Adestrador {
 
     public Adestrador() {}
 
+    /**
+     * Creacion de un objeto adestrador
+     * @param nome el nombre del entrenador
+     * @param nacemento el nacimiento
+     */
     public Adestrador(String nome, Date nacemento) {
         this.nome = nome;
         this.nacemento = nacemento;

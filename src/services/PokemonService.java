@@ -22,6 +22,13 @@ import java.util.List;
  * @see model.Pokemon
  */
 public class PokemonService {
+    /**
+     * Crear pokemon en la base de datos a partir de la siguiente informacion
+     * @param nome el nombre del pokemon
+     * @param nacemento la fecha de nacimiento del Pokemon
+     * @param pokedexEntry la entrada de la pokedex
+     * @param adestrador el entrenador del pokemon
+     */
     public void crearPokemon(String nome, Date nacemento, Pokedex pokedexEntry, Adestrador adestrador) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();

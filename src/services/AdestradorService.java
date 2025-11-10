@@ -23,6 +23,11 @@ import java.util.List;
  * @see model.Adestrador
  */
 public class AdestradorService {
+    /**
+     * Creacion de un adestrador, pasandole su nombre y fecha de nacimiento
+     * @param nome el nombre del entrenador
+     * @param nacemento la fecha de nacimiento del entrenador
+     */
     public void crearAdestrador(String nome, Date nacemento) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
