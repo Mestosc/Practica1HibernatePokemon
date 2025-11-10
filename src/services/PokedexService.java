@@ -92,6 +92,11 @@ public class PokedexService {
             return null;
         }
     }
+
+    /**
+     * Actualizar entrada de la pokedex
+     * @param pokedex le paso un objeto que represente esa entrada con los datos que quiero cambiados
+     */
     public void actualizarEntrada(Pokedex pokedex) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
