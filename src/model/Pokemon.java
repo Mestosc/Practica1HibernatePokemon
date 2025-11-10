@@ -18,7 +18,7 @@ public class Pokemon {
     @Column(name = "nacemento")
     private Date nacemento;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "pokedexentry",referencedColumnName = "id")
     private Pokedex pokedexEntry;
 
